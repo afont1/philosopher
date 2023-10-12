@@ -52,7 +52,7 @@ unsigned long long	ft_atoi(const char *str);
 void				init_data(t_data *data, int argc, char **argv);
 unsigned long long	ft_gettime(void);
 void				*ft_monitoring(t_philo *philo, char *str);
-int					is_dead_full(t_data *data, int i);
+int					is_dead(t_data *data, int i);
 void				ft_supervise(t_data *data);
 void				start_philo(t_data *data);
 void				init_philos(t_data *data);

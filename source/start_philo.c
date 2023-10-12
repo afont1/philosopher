@@ -26,7 +26,7 @@ void	*ft_monitoring(t_philo *philo, char *str)
 	return (NULL);
 }
 
-int	is_dead_full(t_data *data, int i)
+int	is_dead(t_data *data, int i)
 {
 	if (ft_gettime() - data->philos[i].last_eat >= data->die_time)
 	{
@@ -49,7 +49,7 @@ void	ft_supervise(t_data *data)
 		i = -1;
 		pthread_mutex_lock(&data->mutex);
 		while (++i < data->philo_num)
-			if (is_dead_full(data, i))
+			if (is_dead(data, i))
 				return ;
 		if (all_full(data))
 		{
