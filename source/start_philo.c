@@ -31,7 +31,7 @@ int	is_dead_full(t_data *data, int i)
 	if (ft_gettime() - data->philos[i].last_eat >= data->die_time)
 	{
 		pthread_mutex_unlock(&data->mutex);
-		ft_monitoring(&data->philos[i], "is dead");
+		ft_monitoring(&data->philos[i], "died");
 		pthread_mutex_lock(&data->mutex);
 		data->is_end = 1;
 		pthread_mutex_unlock(&data->mutex);
@@ -68,7 +68,9 @@ void	start_philo(t_data *data)
 	i = -1;
 	while (++i < data->philo_num)
 	{
+		pthread_mutex_lock(&data->mutex);
 		data->start_time = ft_gettime();
+		pthread_mutex_unlock(&data->mutex);
 		if (pthread_create(&data->philos[i].thread, \
 		NULL, ft_routine, (void *)&data->philos[i]))
 			ft_error(data, "Thread creation failed");
