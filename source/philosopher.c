@@ -46,6 +46,8 @@ void	check_args(t_data *data, int argc, char **argv)
 	i = 0;
 	while (argv[++i])
 	{
+		if (!argv[i][0])
+			ft_error(data, "Missing arguments");
 		j = -1;
 		if (ft_strlen(argv[i]) > 10 || \
 		(ft_strlen(argv[i]) == 10 && argv[i][9] > '7'))
